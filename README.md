@@ -33,8 +33,6 @@ O projeto simula a experiência real de navegação, filtragem e compra de produ
 ## 📝 Observações Relevantes
 - Preços nulos: Alguns produtos possuem price: null. Nestes casos, o botão exibido será "Ver detalhes", evitando mostrar preço incompleto.
 - Selo de promoção: O campo promotion do backend pode estar inconsistente. Por isso, o selo de "Promoção 🔥" aparece apenas se o componente receber showPromoBadge={true} como nas páginas de filtro promocional.
-- SEO dinâmico: O título, descrição e imagem de Open Graph são gerados com base no produto e na marca, tornando o compartilhamento mais relevante.
-- Responsividade: O layout se adapta bem a mobile, tablet e desktop.
 
 ## 📦 Instalação
 
