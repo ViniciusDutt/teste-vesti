@@ -13,5 +13,5 @@ export async function getBrands(): Promise<Brand[]> {
   if (!res.ok) throw new Error("Erro ao buscar marcas");
 
   const data = await res.json();
-  return data.data.filter((brand: any) => brand.active);
+  return data.data.filter((brand: Brand) => brand.active);
 }

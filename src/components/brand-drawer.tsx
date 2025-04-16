@@ -24,7 +24,7 @@ export function BrandDrawer({
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const router = useRouter();
-  const [isPending, startTransition] = useTransition();
+  const [, startTransition] = useTransition();
 
   const brands = useBrandStore((state) => state.brands);
 

@@ -1,7 +1,6 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import { CartDrawer } from "../cart-drawer";
 import { useCartStore } from "@/store/use-cart-store";
-import { useCartUI } from "@/store/use-cart-ui";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 const closeMock = vi.fn();

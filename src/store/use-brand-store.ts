@@ -1,11 +1,5 @@
 import { create } from "zustand";
-
-type Brand = {
-  id: string;
-  name: string;
-  slug: string;
-  active: boolean;
-};
+import type { Brand } from "@/@/types/brand";
 
 interface BrandStore {
   brands: Brand[];

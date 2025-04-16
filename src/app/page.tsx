@@ -7,10 +7,11 @@ import { ProductsGrid } from "@/components/products";
 import { ProductCardSkeleton } from "@/components/product-card-skeleton";
 
 interface HomeProps {
-  searchParams: Record<string, string | string[] | undefined>;
+  searchParams: Promise<Record<string, string>>;
 }
 
-export default function Home({ searchParams }: HomeProps) {
+export default async function Home({ searchParams }: HomeProps) {
+  const params = await searchParams;
   return (
     <main className="flex flex-col min-h-dvh pb-10">
       <CartDrawer />
@@ -26,7 +27,7 @@ export default function Home({ searchParams }: HomeProps) {
           </div>
         }
       >
-        <ProductsGrid searchParams={searchParams} />
+        <ProductsGrid searchParams={params} />
       </Suspense>
     </main>
   );

@@ -8,7 +8,7 @@ function useCopyToClipboard() {
     try {
       await navigator.clipboard.writeText(text);
       toast("Link copiado!");
-    } catch (err) {
+    } catch {
       toast("Erro ao copiar");
     }
   };

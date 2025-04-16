@@ -8,7 +8,7 @@ import { useEffect, useState, useTransition } from "react";
 export const SearchInput = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const [isPending, startTransition] = useTransition();
+  const [, startTransition] = useTransition();
 
   const paramsObject = Object.fromEntries(searchParams.entries());
   const initialTerm = paramsObject.term ?? "";
@@ -28,7 +28,7 @@ export const SearchInput = () => {
     startTransition(() => {
       router.replace(`?${params.toString()}`);
     });
-  }, [debounced]);
+  }, [debounced, paramsObject, router]);
 
   return (
     <Input

@@ -1,6 +1,6 @@
 import { getProductBySlug } from "@/lib/api/product";
 import { getCompanyData } from "@/lib/api/company";
-import type { Metadata, ResolvingMetadata } from "next";
+import type { Metadata } from "next";
 
 interface Props {
   params: {
@@ -8,10 +8,7 @@ interface Props {
   };
 }
 
-export async function generateMetadata(
-  { params }: Props,
-  _parent?: ResolvingMetadata
-): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const data = await getProductBySlug(params.slug);
   const company = await getCompanyData();
   const product = data?.product_group;

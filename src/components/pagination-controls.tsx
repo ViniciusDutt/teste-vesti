@@ -25,7 +25,7 @@ export function PaginationControls({
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const [isPending, startTransition] = useTransition();
+  const [, startTransition] = useTransition();
 
   const goToPage = (page: number) => {
     const params = new URLSearchParams(searchParams.toString());

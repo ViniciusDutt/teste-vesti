@@ -11,7 +11,6 @@ interface ProductCardProps {
 }
 
 export const ProductCard = ({ product, showPromoBadge }: ProductCardProps) => {
-  const isPromo = product.promotion === true;
   return (
     <Link href={`/product/${product.slug}`} className="relative flex flex-col">
       <div className="relative aspect-[3/4] w-full overflow-hidden">

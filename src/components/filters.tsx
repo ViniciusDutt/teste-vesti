@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Toggle } from "@/components/ui/toggle";
-import { ChevronDown, SlidersHorizontal, X } from "lucide-react";
+import { ChevronDown, X } from "lucide-react";
 import { BrandDrawer } from "@/components/brand-drawer";
 
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
@@ -14,7 +14,7 @@ const Filters = () => {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const [isPending, startTransition] = useTransition();
+  const [, startTransition] = useTransition();
 
   const promoParam = searchParams.get("promo") === "true";
 

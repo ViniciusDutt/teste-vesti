@@ -8,7 +8,7 @@ interface Props {
 }
 
 export async function ProductsGrid({ searchParams }: Props) {
-  const { page, perpage, sort, promo, term, brand } = await searchParams;
+  const { page, sort, promo, term, brand } = await searchParams;
 
   const { products, pagination } = await getProducts({
     page: Number(page) || 1,

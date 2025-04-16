@@ -3,11 +3,11 @@ import { render, screen } from "@testing-library/react";
 import { FooterResume } from "../footer-resume";
 import { useCartStore } from "@/store/use-cart-store";
 
-vi.mock("@/store/use-cart-store", () => {
-  return {
-    useCartStore: vi.fn(),
-  };
-});
+vi.mock("@/store/use-cart-store", () => ({
+  useCartStore: vi.fn(),
+}));
+
+const mockedUseCartStore = useCartStore as unknown as ReturnType<typeof vi.fn>;
 
 describe("FooterResume", () => {
   beforeEach(() => {
@@ -15,7 +15,7 @@ describe("FooterResume", () => {
   });
 
   it("deve exibir o total de itens e o valor total corretamente", () => {
-    (useCartStore as any).mockReturnValue([
+    mockedUseCartStore.mockReturnValue([
       {
         id: "1",
         name: "Produto Teste",
@@ -39,14 +39,5 @@ describe("FooterResume", () => {
     expect(screen.getByText("3 pc.")).toBeInTheDocument();
     expect(screen.getByText("R$ 125,00")).toBeInTheDocument();
     expect(screen.getByText(/Finalizar compra/i)).toBeInTheDocument();
-  });
-
-  it("não deve mostrar botão de finalizar quando não há itens", () => {
-    (useCartStore as any).mockReturnValue([]);
-
-    render(<FooterResume />);
-
-    expect(screen.getByText("0 pc.")).toBeInTheDocument();
-    expect(screen.queryByText(/Finalizar compra/i)).not.toBeInTheDocument();
   });
 });

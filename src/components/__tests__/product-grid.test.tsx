@@ -1,20 +1,24 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import { ProductGrid } from "@/components/product/product-grid";
-import { vi } from "vitest";
+import { vi, describe, it, beforeEach, afterEach, expect } from "vitest";
 import { useCartStore } from "@/store/use-cart-store";
 
-vi.mock("@/store/use-cart-store", async () => {
-  const actual = await vi.importActual<typeof import("@/store/use-cart-store")>(
-    "@/store/use-cart-store"
-  );
-  return {
-    ...actual,
-    useCartStore: vi.fn(() => ({
-      items: [],
-      addItem: vi.fn(),
-      decrementItem: vi.fn(),
-    })),
-  };
+const mockAddItem = vi.fn();
+const mockDecrementItem = vi.fn();
+
+beforeEach(() => {
+  useCartStore.setState({
+    items: [],
+    addItem: mockAddItem,
+    decrementItem: mockDecrementItem,
+    removeItem: vi.fn(),
+    clearCart: vi.fn(),
+  });
+});
+
+afterEach(() => {
+  vi.clearAllMocks();
+  useCartStore.setState({ items: [] });
 });
 
 const mockProduct = {
@@ -80,13 +84,6 @@ describe("ProductGrid", () => {
   });
 
   it("deve chamar addItem ao clicar no botão '+'", () => {
-    const mockAdd = vi.fn();
-    (useCartStore as any).mockReturnValue({
-      items: [],
-      addItem: mockAdd,
-      decrementItem: vi.fn(),
-    });
-
     render(
       <ProductGrid
         product={mockProduct}
@@ -99,6 +96,6 @@ describe("ProductGrid", () => {
     const plusButton = screen.getAllByText("+")[0];
     fireEvent.click(plusButton);
 
-    expect(mockAdd).toHaveBeenCalled();
+    expect(mockAddItem).toHaveBeenCalled();
   });
 });
