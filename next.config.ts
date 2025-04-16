@@ -1,7 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  images: {
+    domains: ["cdn-op.vesti.mobi", "cdn.vesti.mobi"],
+  },
 };
 
 export default nextConfig;
