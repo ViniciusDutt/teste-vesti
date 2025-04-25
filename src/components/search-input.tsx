@@ -28,7 +28,7 @@ export const SearchInput = () => {
     startTransition(() => {
       router.replace(`?${params.toString()}`);
     });
-  }, [debounced, paramsObject, router]);
+  }, [debounced, router]);
 
   return (
     <Input
